@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 # MDBSocialsPart2
 
@@ -49,3 +50,6 @@ Go find a RESTful API online that you think would be useful to this project. Des
 <img width="299" alt="screen shot 2018-03-04 at 12 03 30 am" src="https://user-images.githubusercontent.com/31357149/36943539-ffe27320-1f3f-11e8-8227-43956b5c4efb.png">
 <img width="293" alt="screen shot 2018-03-04 at 12 03 53 am" src="https://user-images.githubusercontent.com/31357149/36943540-fffb0fc0-1f3f-11e8-9fb6-96eacbc1faec.png">
 
+=======
+# MDBSocialsPart3
+>>>>>>> 44bd8a5dcc4450776090e9915f0139d03b142a79
