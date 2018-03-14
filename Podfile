@@ -16,6 +16,7 @@ target 'MDB Socials' do
   pod 'PromiseKit/Alamofire'
   pod 'Spring'
   pod 'LyftSDK/API'
+  pod 'SwiftyBeaver'
   
 
   # Pods for MDB Socials
