@@ -184,7 +184,6 @@
 				6915A3A4203D37570007C747 /* LaunchScreen.storyboard */,
 				69AE77FE2049DB7A005EBE57 /* GoogleService-Info.plist */,
 				6915A3A7203D37570007C747 /* Info.plist */,
-				6915A3CB203D3A190007C747 /* UserAuthHelper.swift */,
 			);
 			path = "MDB Socials";
 			sourceTree = "<group>";
@@ -319,6 +318,7 @@
 			isa = PBXGroup;
 			children = (
 				696113DF204A75BC00EFB1AA /* Utils.swift */,
+				6915A3CB203D3A190007C747 /* UserAuthHelper.swift */,
 				69241F53204BA6D400F11E16 /* DarkSkyAPI.swift */,
 				69241F55204BD3FA00F11E16 /* LyftAPI.swift */,
 			);
