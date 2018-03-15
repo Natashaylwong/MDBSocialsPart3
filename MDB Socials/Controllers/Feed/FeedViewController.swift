@@ -49,6 +49,7 @@ class FeedViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(FeedViewController.printstuff), name: NSNotification.Name(rawValue: mySpecialNotificationKey), object: nil)
         let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
         activityIndicator.startAnimating()
         self.setupNavBar()
@@ -56,7 +57,6 @@ class FeedViewController: UIViewController {
         Users.getCurrentUser(withId: (Auth.auth().currentUser?.uid)!).then{(cUser) in
             self.currentUser = cUser
         }
-        
         FirebaseSocialAPIClient.fetchPosts(withBlock: { (posts) in
             self.posts.append(contentsOf: posts)
 //            if posts.count > 1 {
@@ -82,7 +82,9 @@ class FeedViewController: UIViewController {
 
         })
     }
-    
+    @objc func printstuff() {
+        print("please work")
+    }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
         super.touchesBegan(touches, with: event)

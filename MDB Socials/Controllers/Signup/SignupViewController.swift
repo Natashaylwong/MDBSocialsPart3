@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SwiftyBeaver
 
 class SignupViewController: UIViewController {
     let picker = UIImagePickerController()
@@ -250,6 +251,7 @@ class SignupViewController: UIViewController {
                 print(id)
                 FirebaseSocialAPIClient.createNewUser(id: id, name: name, email: email, username: username, profilePic: imageData!)
                 self.performSegue(withIdentifier: "toFeed", sender: self)
+                SwiftyBeaver.verbose("Successfully signed up")
             })
             
         }

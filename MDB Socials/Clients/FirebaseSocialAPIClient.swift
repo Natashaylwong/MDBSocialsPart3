@@ -10,6 +10,7 @@ import Foundation
 import Firebase
 import PromiseKit
 import SwiftyJSON
+import SwiftyBeaver
 
 class FirebaseSocialAPIClient {
     // Retrieving data from Firebase for Posts
@@ -19,6 +20,7 @@ class FirebaseSocialAPIClient {
             let json = JSON(snapshot.value)
             if let dict = json.dictionaryObject{
                 if let post = Post(JSON: dict){
+                    SwiftyBeaver.verbose("Fetched Posts")
                     withBlock([post])
                 }
             }
@@ -31,6 +33,7 @@ class FirebaseSocialAPIClient {
             let json = JSON(snapshot.value)
             if let dict = json.dictionaryObject{
                 if let user = Users(JSON: dict){
+                    SwiftyBeaver.verbose("Fetched Users")
                     withBlock([user])
                 }
             }
@@ -38,17 +41,17 @@ class FirebaseSocialAPIClient {
     }
     
     // Fetching all users for the modal view
-    static func fetchUsersModal(withBlock: @escaping ([Users]) -> ()) {
-        let ref = Database.database().reference()
-        ref.child("Users").observe(.childAdded, with: { (snapshot) in
-            let json = JSON(snapshot.value)
-            if let dict = json.dictionaryObject{
-                if let user = Users(JSON: dict){
-                    withBlock([user])
-                }
-            }
-        })
-    }
+   // static func fetchUsersModal(withBlock: @escaping ([Users]) -> ()) {
+   //     let ref = Database.database().reference()
+   //     ref.child("Users").observe(.childAdded, with: { (snapshot) in
+   //         let json = JSON(snapshot.value)
+   //         if let dict = json.dictionaryObject{
+   //             if let user = Users(JSON: dict){
+   //                 withBlock([user])
+   //             }
+   //         }
+   //     })
+  //  }
     
     
     // Retrieving data from Firebase for a user
@@ -59,6 +62,7 @@ class FirebaseSocialAPIClient {
                 let json = JSON(snapshot.value)
                 if let dict = json.dictionaryObject{
                     if let user = Users(JSON: dict){
+                        SwiftyBeaver.verbose("Fetched a single user")
                         fulfill(user)
                     }
                 }
@@ -80,6 +84,7 @@ class FirebaseSocialAPIClient {
             let newPost = ["name": name, "description": description, "date": date, "imageURL": imageURL, "host": host, "hostId": hostId, "postId": key, "interested": interested, "location": location ] as [String: Any]
             let childUpdates = ["\(key)": newPost]
             postsRef.updateChildValues(childUpdates)
+            SwiftyBeaver.verbose("Created a new post")
         
         }
 //        if let postDict = snapshot.value as? [String: Any] {
@@ -108,6 +113,7 @@ class FirebaseSocialAPIClient {
             let newUser = ["name": name, "email": email, "username": username, "id": id, "imageUrl": imageURL] as [String: Any]
             let childUpdates = ["\(id)": newUser]
             usersRef.updateChildValues(childUpdates)
+            SwiftyBeaver.verbose("Created a new user")
         }
     }
 }

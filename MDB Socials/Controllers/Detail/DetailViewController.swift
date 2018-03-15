@@ -14,6 +14,8 @@ import PromiseKit
 import Alamofire
 import SwiftyJSON
 
+let mySpecialNotificationKey = "specialNotificationKey"
+
 class DetailViewController: UIViewController {
     var currentUser: Users!
     var post: Post!
@@ -91,6 +93,7 @@ class DetailViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(DetailViewController.updateNotificationSentLabel), name: NSNotification.Name(rawValue: mySpecialNotificationKey), object: nil)
         setupExit()
         setupLabels()
         setupInterested()
@@ -102,7 +105,10 @@ class DetailViewController: UIViewController {
 //        queryLyft()
         setupScrollView()
         }
-//
+    @objc func updateNotificationSentLabel() {
+        print("hello")
+    }
+    //
 //    func queryLyft(){
 //        let eventLocation = CLLocationCoordinate2DMake(37.8719, 122.2585)
 //        LyftHelper.getRideEstimate(pickup: coordinates, dropoff: eventLocation) { costEstimate in
@@ -354,6 +360,7 @@ class DetailViewController: UIViewController {
     }
     
     @objc func interestPressed() {
+        NotificationCenter.default.post(name: Notification.Name(rawValue: mySpecialNotificationKey), object: self)
         if interested == nil {
             interestedButton.tintColor = UIColor.red
             interested = [currentUser.id!]
@@ -380,7 +387,7 @@ class DetailViewController: UIViewController {
         }
     
     }
-    
+
 
 }
 

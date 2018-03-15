@@ -7,6 +7,7 @@
 //
 import UIKit
 import Firebase
+import SwiftyBeaver
 
 class LoginViewController: UIViewController {
     
@@ -32,6 +33,8 @@ class LoginViewController: UIViewController {
         navigationController?.isNavigationBarHidden = true
         if Auth.auth().currentUser != nil {
             performSegue(withIdentifier: "toFeedFromLogin", sender: self)
+            SwiftyBeaver.info("Already logged in")
+            
         }
     }
     
@@ -143,6 +146,7 @@ class LoginViewController: UIViewController {
             self.emailTextField.text = ""
             self.passwordTextField.text = ""
             self.performSegue(withIdentifier: "toFeedFromLogin", sender: self)
+            SwiftyBeaver.info("Successfully logged in")
         })
         
     }
